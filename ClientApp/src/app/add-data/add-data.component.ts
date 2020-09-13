@@ -22,7 +22,8 @@ export class AddDataComponent implements OnInit{
   carModel: FormControl;
   id: FormControl;
   showSuccess: boolean;
-    baseUrl: string;
+  showError: boolean;
+  baseUrl: string;
 
   constructor(private _router: Router, private http: HttpClient, @Inject('BASE_URL') _baseUrl: string) {
     this.baseUrl = _baseUrl;
@@ -33,6 +34,7 @@ export class AddDataComponent implements OnInit{
     this.inItForm();
     this.storage = sessionStorage;
     this.showSuccess = false;
+    this.showError = false;
     console.log(this.storage);
   }
 
@@ -65,24 +67,29 @@ export class AddDataComponent implements OnInit{
 
   //Submit Data
   onSubmit() {
+    this.showError = false;
     if (this.myform.valid) {
       const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
       this.http.post(this.baseUrl + 'carsales/save', JSON.stringify(this.myform.value), { 'headers': headers }).subscribe(
         data => {
-          this.showSuccess = true; 
-          },
-          error => {
-            console.log(error);
-          }
-        )
+          this.showSuccess = true;
+        },
+        error => {
+          console.log(error);
+        }
+      )
       console.log(this.myform.value);
       window.sessionStorage.setItem('cars', JSON.stringify(this.myform.value));
+    }
+    else {
+      this.showError = true;
     }
   }
   // Reset Data
   resetTheForm(): void {
     this.myform.reset();
     this.showSuccess = false;
+    this.showError = false;
   }
   onBackClick() {
     this._router.navigate(['/']);

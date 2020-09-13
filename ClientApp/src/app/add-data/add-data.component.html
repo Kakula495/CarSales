@@ -7,31 +7,31 @@
     <form novalidate [formGroup]="myform" (ngSubmit)="onSubmit()">
       <div class="form-group" [ngClass]="{'has-danger': vehicleType.invalid && (vehicleType.dirty || vehicleType.touched),
                                             'has-success': vehicleType.valid && (vehicleType.dirty || vehicleType.touched) }">
-        <label>Vehicle Type</label>
+        <label>Vehicle Type<span class="mandatory">*</span></label>
         <input type="text" class="form-control" formControlName="vehicleType" required>
         <div *ngIf="vehicleType.errors && (vehicleType.dirty || vehicleType.touched)">
-          <div  class="alert alert-danger"  *ngIf="vehicleType.errors.required">Vehicle Type is required</div>
+          <div class="alert alert-danger" *ngIf="vehicleType.errors.required">Vehicle Type is required</div>
         </div>
       </div>
       <div class="form-group" [ngClass]="{'has-danger': engine.invalid && (engine.dirty || engine.touched),
                                             'has-success': engine.valid && (engine.dirty || engine.touched) }">
-        <label>Engine</label>
+        <label>Engine<span class="mandatory">*</span></label>
         <input type="text" class="form-control" formControlName="engine" required>
         <div *ngIf="engine.errors && (engine.dirty || engine.touched)">
-          <div  class="alert alert-danger" *ngIf="engine.errors.required">Engine is required</div>
+          <div class="alert alert-danger" *ngIf="engine.errors.required">Engine is required</div>
         </div>
       </div>
       <div class="form-group">
-        <label>Doors</label>
+        <label>Doors<span class="mandatory">*</span></label>
         <input type="number" class="form-control" formControlName="doors" min="1" max="10">
       </div>
       <div class="form-group">
-        <label>wheels</label>
+        <label>wheels<span class="mandatory">*</span></label>
         <input type="number" class="form-control" formControlName="wheels" min="1" max="10">
       </div>
       <div class="form-group" [ngClass]="{'has-danger': bodyType.invalid && (bodyType.dirty || bodyType.touched),
                                             'has-success': bodyType.valid && (bodyType.dirty || bodyType.touched) }">
-        <label>bodyType</label>
+        <label>bodyType<span class="mandatory">*</span></label>
         <input type="text" class="form-control" formControlName="bodyType" required>
         <div class="alert alert-danger"
              *ngIf="bodyType.errors && (bodyType.dirty || bodyType.touched)">
@@ -40,7 +40,7 @@
       </div>
       <div class="form-group" [ngClass]="{'has-danger': make.invalid && (make.dirty || make.touched),
                                             'has-success': make.valid && (make.dirty || make.touched) }">
-        <label>Make</label>
+        <label>Make<span class="mandatory">*</span></label>
         <input type="text" class="form-control" formControlName="make" required>
         <div *ngIf="make.errors && (make.dirty || make.touched)">
           <div class="alert alert-danger" *ngIf="make.errors.required">Maked by is required</div>
@@ -48,22 +48,25 @@
       </div>
       <div class="form-group" [ngClass]="{'has-danger': carModel.invalid && (carModel.dirty || carModel.touched),
                                             'has-success': carModel.valid && (carModel.dirty || carModel.touched) }">
-        <label>Car Model</label>
+        <label>Car Model<span class="mandatory">*</span></label>
         <input type="text" class="form-control" formControlName="carModel" required>
         <div *ngIf="carModel.errors && (carModel.dirty || carModel.touched)">
           <div class="alert alert-danger" *ngIf="carModel.errors.required">Car Model is required</div>
         </div>
       </div>
       <div class="row sucess-text" *ngIf="showSuccess">
-        <div class="alert-success"> Car Added SucessFully</div>
+        <div class="alert alert-success"> Car Added SucessFully</div>
+      </div>
+      <div class="row error-text" *ngIf="showError">
+        <div class="alert alert-danger"> All Feilds are Mandatory</div>
       </div>
       <div class="row">
         <div class="col-md-3"><button type="submit" class="btn btn-primary"> ADD </button></div>
         <div class="col-md-9"><button type="reset" class="btn btn-primary" (click)="resetTheForm()"> Reset </button></div>
       </div>
       <!--<div class="row">
-        <pre>{{myform.value | json}}</pre>
-      </div>-->
+    <pre>{{myform.value | json}}</pre>
+  </div>-->
     </form>
   </div>
 </div>

@@ -11,6 +11,16 @@
 }
 
 .sucess-text{
-    font-size:23px;
+    font-size:28px;
+    margin-left:20px;
     color:green;
+}
+.error-text {
+  font-size: 28px;
+  margin-left: 20px;
+  color: green;
+}
+.mandatory {
+    color:red;
+    margin-left:5px;
 }
