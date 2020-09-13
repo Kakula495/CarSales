@@ -60,7 +60,7 @@ export class AddDataComponent implements OnInit{
     this.make = new FormControl('', Validators.required);
     this.carModel = new FormControl('', Validators.required);
     this.engine = new FormControl('', Validators.required);
-    this.id = new FormControl((Math.floor(Math.random() * 200) - 100));
+    this.id = new FormControl(Math.abs((Math.floor(Math.random() * 200) - 100)));
   }
 
   //Submit Data

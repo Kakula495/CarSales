@@ -1,8 +1,7 @@
 <h1>Car Sales</h1>
-<div class="row">
+<div class="row" style="margin-left: 0px;margin-bottom: 15px;">
   <div class="pull-left">
-    <button type="button" class="btn btn-primary btn-sm" (click)="addCars()">Add</button>
-    <br />
+    <button type="button" class="btn btn-primary btn-sm" (click)="addCars()">Add Cars</button>
   </div>
 </div>
 <div class="row">
@@ -10,7 +9,7 @@
     <table class="table table-bordered table-hover">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">#Serial No</th>
           <th scope="col">Vehicle Type</th>
           <th scope="col">Make</th>
           <th scope="col">Model</th>
@@ -23,7 +22,7 @@
       <tbody>
         <tr *ngFor="let car of cars">
           <td>
-            <button type="button" class="btn btn-primary btn-sm" (click)="removeCars(car.id)">Remove</button>
+            {{car.id}}
           </td>
           <td>
             {{car.vehicleType}}
